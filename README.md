@@ -1,1 +1,2 @@
 # nuxt3_fastapi_aws
+Nuxt3,FastAPI,AWSで作る2024年1月開始のポートフォリオ兼個人開発SPAサイト
