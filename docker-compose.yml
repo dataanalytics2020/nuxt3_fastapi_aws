@@ -1,0 +1,46 @@
+version: '3'
+services:
+  # バックエンド(docker FastAPI)
+  back:
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+    volumes:
+      - ./back/app:/app/
+    tty: true
+    restart: on-failure
+    working_dir: /app
+    command: uvicorn src.main:app --reload --host 0.0.0.0 --port 5001
+
+  front:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000 # 本番で動かす際はコメントアウト
+    volumes:
+      - ./front/app:/app
+      - front_node_modules:/app/node_modules
+    tty: true
+    restart: on-failure
+    working_dir: /app
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - ./server/nginx.conf:/etc/nginx/nginx.conf
+      - ./server/conf.d:/etc/nginx/conf.d
+      - ./server/log:/var/log/nginx
+      - ./front/app/dist:/www/dist
+    tty: true
+    restart: on-failure
+
+  
+volumes:
+  front_node_modules:
+
+  

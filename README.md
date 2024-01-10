@@ -1,5 +1,26 @@
 # Slomap SPA
 
+## 環境構築
+FastAPI+Vuetify+Nginx+Dockerのテンプレートを活用
+1. コンテナのビルド&起動
+```
+$ docker compose up -d --build
+```
+
+2. 開発環境起動
+```
+$ docker compose exec front yarn dev
+```
+
+3. http://localhost:3000 にアクセス(viteの開発環境へのアクセス)
+
+4. フロント側のビルド
+```
+docker compose exec front yarn build
+```
+
+5. http://localhost:8000 にアクセス(NGINXによる本番環境へのアクセス)
+
 <br>
 
 ## ⚪︎**サービス URL**
@@ -114,9 +135,6 @@
 </details>
 
 <details>
-<summary>4. 担当部門の表示</summary>
 
-- カレンダー表示において、左側に各スタッフの担当部門を明示的に表示する。
-</details>
 
 <details>
