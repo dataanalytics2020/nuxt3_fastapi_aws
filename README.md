@@ -1,5 +1,9 @@
 # Slomap SPA
 
+
+## 仮想環境実行
+.venv/Scripts/Activate.ps1
+
 ## 環境構築
 FastAPI+Vuetify+Nginx+Dockerのテンプレートを活用
 1. コンテナのビルド&起動
